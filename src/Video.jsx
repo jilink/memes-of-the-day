@@ -10,20 +10,34 @@ const subbreddits = ["memes", "dankmemes", "funny"]
 
 export const RemotionVideo = () => {
 	const [bestMemes, setBestMemes] = useState([]);
+
+
+
+
 	useEffect(() => {
-		fetch("https://www.reddit.com/r/memes/top.json?t=day&limit=10")
-		.then(res => {
-			if (res.status !== 200) {
-				console.log("error")
-				return
-			}
-			return res.json()
-		})
-		.then(data => {
-			console.log(data.data.children)
-			setBestMemes(data.data.children)
-		})
-	}, []);
+	const getMemes = async (sub) => {
+		const res = await fetch(`https://www.reddit.com/r/${sub}/top.json?t=day&limit=10`)
+		if (res.status !== 200) {
+			console.log("error")
+			return [];
+		}
+		const data = await res.json();
+		return data.data.children
+	}
+
+	const filterMemes = async () => {
+		let tmpMemes = []
+		for (const sub of subbreddits) {
+			const fetchedMemes = await getMemes(sub);
+			tmpMemes = tmpMemes.concat(fetchedMemes);
+			console.log(tmpMemes);
+		}
+		const onlyImages = tmpMemes.filter(child => child.data.post_hint==="image")
+		console.log("onlyImages", onlyImages)
+		setBestMemes(onlyImages)
+	}
+	filterMemes();
+}, []);
 
 	return (
 		<>
@@ -58,7 +72,7 @@ export const RemotionVideo = () => {
 			<Composition
 				id="memes"
 				component={Memes}
-				durationInFrames={1000}
+				durationInFrames={3000}
 				fps={30}
 				width={1920}
 				height={1080}

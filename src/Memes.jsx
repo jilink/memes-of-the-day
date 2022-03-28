@@ -16,10 +16,10 @@ export const Memes = ({memes=[]}) => {
 		}
 	);
 	const transitionStart = 25;
-  const timePerMeme = videoConfig.durationInFrames / memes.length;
+  const timePerMeme = parseInt(videoConfig.durationInFrames / memes.length);
 
 	return (
-		<div style={{flex: 1, backgroundColor: 'white'}}>
+		<div style={{flex: 1, backgroundColor: 'black'}}>
 			<div style={{opacity}}>
 				{memes.map((meme, index) => (
 					<Sequence
