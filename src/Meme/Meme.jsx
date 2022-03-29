@@ -10,6 +10,19 @@ export const Meme = ({meme={}}) => {
 				style={{
 					fontFamily: 'SF Pro Text, Helvetica, Arial',
 					fontWeight: 'bold',
+					fontSize: 20,
+					textAlign: 'center',
+					top: 50,
+					width: '100%',
+          color: 'white',
+				}}
+			>
+				Made by {meme?.data?.author}
+			</h1>
+			<h1
+				style={{
+					fontFamily: 'SF Pro Text, Helvetica, Arial',
+					fontWeight: 'bold',
 					fontSize: 30,
 					textAlign: 'center',
 					top: 50,

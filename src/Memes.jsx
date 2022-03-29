@@ -1,5 +1,6 @@
-import {interpolate, Sequence, useCurrentFrame, useVideoConfig} from 'remotion';
+import {interpolate, Sequence, useCurrentFrame, useVideoConfig, Audio} from 'remotion';
 import {Meme} from './Meme/Meme';
+import falling from "./audio/falling.mp3";
 
 export const Memes = ({memes=[]}) => {
   console.log("bestMemes, ", memes);
@@ -31,6 +32,7 @@ export const Memes = ({memes=[]}) => {
 					</Sequence>
 				))}
 			</div>
+			<Audio src={falling} />
 		</div>
 	);
 };

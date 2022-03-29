@@ -16,7 +16,7 @@ export const RemotionVideo = () => {
 
 	useEffect(() => {
 	const getMemes = async (sub) => {
-		const res = await fetch(`https://www.reddit.com/r/${sub}/top.json?t=day&limit=10`)
+		const res = await fetch(`https://www.reddit.com/r/${sub}/top.json?t=day&limit=6`)
 		if (res.status !== 200) {
 			console.log("error")
 			return [];
@@ -72,7 +72,7 @@ export const RemotionVideo = () => {
 			<Composition
 				id="memes"
 				component={Memes}
-				durationInFrames={3000}
+				durationInFrames={4000}
 				fps={30}
 				width={1920}
 				height={1080}
